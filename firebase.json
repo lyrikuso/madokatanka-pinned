@@ -14,7 +14,7 @@
       "**/pages/**",
       "**/plugins/**",
       "**/server/**",
-      "**/static/**"
+      "**/static/**",
       "**/store/**",
       "**/.*",
       "**/node_modules/**"

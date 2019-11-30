@@ -14,7 +14,7 @@
     "build": "cross-env NODE_ENV=\"production\" nuxt build",
     "start": "cross-env NODE_ENV=\"production\" forever --killSignal=SIGTERM -c 'nodemon --exitcrash' server/index.js",
     "postdeploy": "fc-cache -fv",
-    "generate-docs": "apidoc -i server/routes/ -o public/docs/",
+    "generate-docs": "apidoc -i server/routes/ -o docs/",
     "deploy:hosting": "firebase deploy --except functions",
     "deploy:functions": "firebase deploy --only functions"
   },
