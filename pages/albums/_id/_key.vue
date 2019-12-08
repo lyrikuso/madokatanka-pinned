@@ -47,17 +47,7 @@
     </section>
 
     <section>
-        <div id="disqus_thread"></div>
-        <client-only>
-            <script defer>
-                (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://madokatanka.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-        </client-only>
+        <vue-disqus shortname="madokatanka"></vue-disqus>
     </section>
 
     <footer>

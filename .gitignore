@@ -98,3 +98,7 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+# Private files
+nuxt-fire.config.js
+adminsdk-*.js

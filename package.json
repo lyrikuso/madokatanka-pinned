@@ -1,6 +1,6 @@
 {
   "name": "madokatanka",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "My wicked Nuxt.js project",
   "homepage": "https://github.com/paithiov909/madokatanka-pinned#readme",
   "license": "MIT",
@@ -60,6 +60,7 @@
     "swiper": "^4.5.0",
     "tableexport": "^5.2.0",
     "underscore": "^1.9.1",
+    "vue-disqus": "^3.0.5",
     "vuelidate": "^0.7.4",
     "vuesax": "^3.9.0"
   },
