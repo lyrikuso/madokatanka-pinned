@@ -31,16 +31,16 @@ module.exports = {
             { hid: "twitter:widgets:csp", name: "twitter:widgets:csp", content: "on" },
             { hid: "twitter:dnt", name: "twitter:dnt", content: "on" },
             { name: "msapplication-TileColor", content: "#ffc40d" },
-            { name: "msapplication-config", content: "/favicon/broserconfig.xml" },
+            { name: "msapplication-config", content: "https://madokatanka.firebaseapp.com/favicon/broserconfig.xml" },
             { name: "theme-color", content: "#ffffff" }
         ],
         link: [
-            { rel: "icon", type: "image/x-icon", href: "/favicon/favicon.ico" },
-            { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon/apple-touch-icon.png" },
-            { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon/favicon-32x32.png" },
-            { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon/favicon-16x16.png" },
-            { rel: "mask-icon", href: "/favicon/safari-pinned-tab.svg", color: "#5bbad5" },
-            { rel: "shortcut icon", href: "/favicon/favicon.ico" },
+            { rel: "icon", type: "image/x-icon", href: "https://madokatanka.firebaseapp.com/favicon/favicon.ico" },
+            { rel: "apple-touch-icon", sizes: "180x180", href: "https://madokatanka.firebaseapp.com/favicon/apple-touch-icon.png" },
+            { rel: "icon", type: "image/png", sizes: "32x32", href: "https://madokatanka.firebaseapp.com/favicon/favicon-32x32.png" },
+            { rel: "icon", type: "image/png", sizes: "16x16", href: "https://madokatanka.firebaseapp.com/favicon/favicon-16x16.png" },
+            { rel: "mask-icon", href: "https://madokatanka.firebaseapp.com/favicon/safari-pinned-tab.svg", color: "#5bbad5" },
+            { rel: "shortcut icon", href: "https://madokatanka.firebaseapp.com/favicon/favicon.ico" },
             { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Noto+Serif+JP", crossorigin: "anonymous" },
             { rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons", crossorigin: "anonymous" },
             { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css", integrity: "sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=", crossorigin: "anonymous" },
@@ -51,7 +51,7 @@ module.exports = {
             { rel: "stylesheet", href: "https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css", crossorigin: "anonymous" }
         ],
         script: [
-            { src: "https://madokatanka.firebaseapp.com/contents/nehan.min.js" }
+            { src: "https://madokatanka.firebaseapp.com/contents/nehan.min.js", async: true }
         ]
     },
     /*
