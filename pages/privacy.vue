@@ -46,7 +46,7 @@
 
     <footer>
         <p>
-            Copyright &copy; 2019 まどか短歌会
+            Copyright &copy; 2019-2020 まどか短歌会
         </p>
         <p>
             Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" target="_blank" rel="noopener noreferrer">Kiranshastry</a> from <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>｜

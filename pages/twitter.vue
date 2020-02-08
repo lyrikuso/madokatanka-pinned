@@ -12,6 +12,10 @@
     </header>
 
     <section>
+        <ul>
+          <li><a href="https://paithiov909.github.io/madokatanka-pinned/" target="_blank" rel="noopener noreferrer">API doc</a></li>
+          <li><a href="https://github.com/paithiov909/madokatanka-pinned/" target="_blank" rel="noopener noreferrer">Repository</a></li>
+        </ul>
         <div v-twitter-widgets class="bg-white">
             <a class="twitter-timeline" data-chrome="noheader, nofooter, noscrollbar" data-tweet-limit="8" href="https://twitter.com/madokatanka"></a>
         </div>
@@ -19,7 +23,7 @@
 
     <footer>
         <p>
-            Copyright &copy; 2019 まどか短歌会
+            Copyright &copy; 2019-2020 まどか短歌会
         </p>
         <p>
             Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" target="_blank" rel="noopener noreferrer">Kiranshastry</a> from <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>｜
@@ -68,6 +72,9 @@ export default {
 </script>
 
 <style scoped>
+	ul {
+		list-style: none;
+	}
     .bg-white {
         padding: 1em;
         background-color: #fafafa;

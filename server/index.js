@@ -82,7 +82,6 @@ if (!config.dev) {
 }
 
 // CSRF
-app.use("/webhooks", require("./routes/webhooks"))
 app.use(csrf({
     cookie: true,
     ignoreMethods: ["GET", "HEAD", "OPTIONS"]

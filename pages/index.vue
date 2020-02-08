@@ -39,20 +39,10 @@
                 <nuxt-link to="/post/albums">こちら</nuxt-link>から作品のデータをJSONで返すURLを指定することで、作品を公開するためのURLを発行できます。利用するにはGoogleアカウントでサインアップする必要があります。<nuxt-link to="/privacy">プライバシーポリシー</nuxt-link>を確認のうえ、ご利用ください。
             </p>
         </div>
-        <!-- <div class="underlined">
-            <h2>Play Ground</h2>
-            <p>
-                短歌ジェネレーターは<nuxt-link to="/playground/generator">こちら</nuxt-link>から。
-            </p>
-        </div> -->
         <div class="underlined">
             <h2>Socials</h2>
             <p>
-                <nuxt-link to="/twitter">Twitter</nuxt-link>をやっています。DMを開放していますので、管理者にコンタクトを取りたい方は<a href="https://twitter.com/madokatanka" target="_new">@madokatanka</a>にご連絡ください。<wbr />
-                公式LINEはじめました。更新情報を配信することがあります。以下から友だち追加してください。
-            </p>
-            <p>
-                <a href="https://lin.ee/pKOZsw9"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+                <nuxt-link to="/twitter">Twitter</nuxt-link>をやっています。DMを開放していますので、管理者にコンタクトを取りたい方は<a href="https://twitter.com/madokatanka" target="_new">@madokatanka</a>にご連絡ください。
             </p>
         </div>
     </section>
@@ -60,7 +50,7 @@
     <footer>
         <socials class="padding"></socials>
         <p>
-            Copyright &copy; 2019 まどか短歌会
+            Copyright &copy; 2019-2020 まどか短歌会
         </p>
         <p>
             Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" target="_blank" rel="noopener noreferrer">Kiranshastry</a> from <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>｜
