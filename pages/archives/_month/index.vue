@@ -39,7 +39,7 @@
                 <tbody>
                     <tr v-for="item in slides" :key="item.id">
                         <td class="clip" :data-clipboard-text="item.id">{{ item.id }}</td>
-                        <td v-html="item.body"></td>
+                        <td class="clip" :data-clipboard-text="item.body" v-html="item.body"></td>
                     </tr>
                 </tbody>
             </table>
@@ -51,6 +51,8 @@
     </section>
 
     <footer>
+        <vs-button color="rgb(65,201,180)" type="line" icon="create" :href="noteLink" target="_blank">noteでこのページの記事を書く</vs-button>
+        <vs-divider />
         <socials></socials>
         <p>
             Copyright &copy; 2019-2020 まどか短歌会
@@ -150,6 +152,9 @@ export default {
                 bootstrap: true,
                 trimWhitespace: true
             }
+        },
+        noteLink () {
+            return `https://note.com/intent/post?url=https://madokatanka.herokuapp.com/archives/${this.month}&hashtags=madokatanka`
         }
     },
     mounted () {

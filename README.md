@@ -1,6 +1,6 @@
 # madokatanka
 
-> まどか短歌会のリポジトリです。Credentialなどの一部のファイルを除いて公開しています。
+> まどか短歌会のリポジトリです
 
 ## Build Setup
 

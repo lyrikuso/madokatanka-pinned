@@ -22,6 +22,10 @@
         </div>
     </section>
 
+    <section>
+        <vue-disqus shortname="madokatanka"></vue-disqus>
+    </section>
+
     <footer>
         <socials></socials>
         <p>

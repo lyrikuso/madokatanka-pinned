@@ -3,13 +3,6 @@ if (process.client) {
     // TableExport
     require("tableexport")
 
-    // Shar-this
-    require("./sharers/share-this.js")
-    require("./sharers/facebook.js")
-    require("./sharers/twitter.js")
-
-    const shareThis = window.ShareThis({ sharers: [ window.ShareThisViaTwitter, window.ShareThisViaFacebook ]}).init()
-
     // Flexdatalist
     require("./flexdatalist/jquery.flexdatalist.min.js")
 

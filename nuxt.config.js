@@ -19,12 +19,12 @@ module.exports = {
             { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" },
             { chrset: "utf-8" },
             { name: "google-site-verification", content: "235YhdO-YxyJEfMSllBfO_8PM3DL3tu-e3teVUZkksU" },
-            { hid: "description", name: "description", content: "まどか短歌会はインターネット上でのみ活動する、実体のない短歌会です。誰でも参加できますが、投稿された作品は誰が投稿したものかわからないように公開されます。" },
+            { hid: "description", name: "description", content: "まどか短歌会はインターネット上でのみ活動する、実体のない短歌会（短歌×ナラティヴコミュニティ）です。誰でも参加できますが、投稿された作品は誰が投稿したものかわからないように公開されます。" },
             { hid: "og:image", property: "og:image", content: "https://madokatanka.firebaseapp.com/contents/cover.jpg" },
             { hid: "og:type", property: "og:type", content: "website" },
             { hid: "og:title", property: "og:title", content: "まどか短歌会" },
             { hid: "og:site_name", property: "og:site_name", content: "まどか短歌会" },
-            { hid: "og:description", property: "og:description", content: "まどか短歌会はインターネット上でのみ活動する、実体のない短歌会です。誰でも参加できますが、投稿された作品は誰が投稿したものかわからないように公開されます。" },
+            { hid: "og:description", property: "og:description", content: "まどか短歌会はインターネット上でのみ活動する、実体のない短歌会（短歌×ナラティヴコミュニティ）です。誰でも参加できますが、投稿された作品は誰が投稿したものかわからないように公開されます。" },
             { hid: "twitter:card", name: "twitter:card", content: "summary" },
             { hid: "twitter:site", name: "twitter:site", content: "@madokatanka" },
             { hid: "twitter:widgets:autoload", name: "twitter:widgets:autoload", content: "off" },
@@ -118,7 +118,6 @@ module.exports = {
     css: [
         "@/assets/css/icomoon.css",
         "@/assets/css/nehan.css",
-        "@/assets/css/share-this.css",
         "@/assets/css/jquery.flexdatalist.min.css"
     ],
     /*

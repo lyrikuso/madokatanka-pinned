@@ -39,7 +39,7 @@
                 <tbody>
                     <tr v-for="item in parsed" :key="item.id">
                         <td>{{ item.id }}</td>
-                        <td v-html="item.body"></td>
+                        <td class="clip" :data-clipboard-text="item.body" v-html="item.body"></td>
                     </tr>
                 </tbody>
             </table>
@@ -51,6 +51,8 @@
     </section>
 
     <footer>
+        <vs-button color="rgb(65,201,180)" type="line" icon="create" :href="noteLink" target="_blank">noteでこのページの記事を書く</vs-button>
+        <vs-divider />
         <socials></socials>
         <p>
             Copyright &copy; 2019-2020 まどか短歌会
@@ -166,8 +168,9 @@ export default {
             })
         return {
             data: data,
+            key: params.key,
             title: title[0],
-            slides: slides
+            slides: slides,
         }
     },
     computed: {
@@ -191,11 +194,27 @@ export default {
         },
         link () {
             return `/albums/${this.data.id}`
+        },
+        noteLink () {
+            return `https://note.com/intent/post?url=https://madokatanka.herokuapp.com/albums/${this.data.id}/${this.key}/&hashtags=madokatanka`
         }
     },
     mounted () {
 
         this.mySwiper(this.parsed)
+
+        const cb = new ClipboardJS(".clip")
+        cb.on("success", e => {
+            if (process.client) {
+                this.$vs.notify({
+                    time: 4000,
+                    title: "クリップボードにコピーしました",
+                    text: e.text,
+                    color: "primary",
+                    icon: "info"
+                })
+            }
+        })
 
         if (_.isUndefined(this.tableExport)) {
             if (process.browser) {
