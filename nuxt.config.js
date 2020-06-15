@@ -1,6 +1,6 @@
 const webpack = require("webpack")
 const MomentLocalesPlugin = require("moment-locales-webpack-plugin")
-const config = require("./nuxt-fire.config.js")
+const config = require("./firebase.config.js")
 const isdev = (process.env.NODE_ENV === "development")
 
 module.exports = {
@@ -27,6 +27,7 @@ module.exports = {
             { hid: "og:description", property: "og:description", content: "まどか短歌会はインターネット上でのみ活動する、実体のない短歌会（短歌×ナラティヴコミュニティ）です。誰でも参加できますが、投稿された作品は誰が投稿したものかわからないように公開されます。" },
             { hid: "twitter:card", name: "twitter:card", content: "summary" },
             { hid: "twitter:site", name: "twitter:site", content: "@madokatanka" },
+            { hid: "twitter:creator", name: "twitter:creator", content: "@shinabitanori" },
             { hid: "twitter:widgets:autoload", name: "twitter:widgets:autoload", content: "off" },
             { hid: "twitter:widgets:csp", name: "twitter:widgets:csp", content: "on" },
             { hid: "twitter:dnt", name: "twitter:dnt", content: "on" },
@@ -49,9 +50,6 @@ module.exports = {
             { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/jsSocials/1.5.0/jssocials.min.css", integrity: "sha256-1tuEbDCHX3d1WHIyyRhG9D9zsoaQpu1tpd5lPqdqC8s=", crossorigin: "anonymous" },
             { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.2.0/css/tableexport.min.css", integrity: "sha256-ljRB06PkvKJLniqOfPxxNfnIGgtF3gSWnLqYuFhWoDY=", crossorigin: "anonymous" },
             { rel: "stylesheet", href: "https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css", crossorigin: "anonymous" }
-        ],
-        script: [
-            { src: "https://madokatanka.firebaseapp.com/contents/nehan.min.js", async: true }
         ]
     },
     /*
@@ -110,14 +108,13 @@ module.exports = {
                 }
             ],
             "splash_pages": null
-		}
+        }
     },
     /*
     ** Global CSS
     */
     css: [
         "@/assets/css/icomoon.css",
-        "@/assets/css/nehan.css",
         "@/assets/css/jquery.flexdatalist.min.css"
     ],
     /*
@@ -146,12 +143,12 @@ module.exports = {
             directiveName: "twitter-widgets",
             scriptUrl: "https://platform.twitter.com/widgets.js"
         }],
-        ["nuxt-fire", {
-            useOnly: ["auth"],
-            config: {
-                development: config,
-                production: config
-            }
+        ["@nuxtjs/firebase", {
+            services: {
+                auth: true
+            },
+            onFirebaseHosting: false,
+            config: config
         }],
         "nuxt-compress",
         "@nuxtjs/sitemap"

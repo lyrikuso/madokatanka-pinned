@@ -9,19 +9,12 @@
 </template>
 
 <script>
+import * as Nehan from "nehan";
+
 export default {
-    data () {
-        return {
-            nehan: undefined
-        };
-    },
     props: [
         "item"
     ],
-    mounted () {
-        const nehan = new Nehan.Document();
-        this.nehan = nehan;
-    },
     directives: {
         nehan: {
             bind (el, binding, vnode) {
@@ -29,18 +22,25 @@ export default {
                     if (vnode.context.checkHTML(binding.value)) {
                         const rows = binding.value.split("\n");
                         const item = _.reduce(rows, (memo, row) => { return memo + vnode.context.compiled({ row: row }) }, "");
-                        vnode.context.nehan.setContent(vnode.context.wrapper({ item: item }));
-                        vnode.context.nehan.setStyle("body", {
-                            display: "inline-block",
-                            flow: "tb-rl",
-                            height: $(el).height()
-                        });
-                        vnode.context.nehan.setStyle(".serif", {
-                            "font-family": "'Noto Serif JP', 'Yu Mincho', YuMincho, 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'HGP明朝B', sans-serif"
-                        });
-                        vnode.context.nehan.render({
-                            onPage: (page, ctx) => {
-                                $(vnode.context.$refs.nehan).html(page.element);
+                        new Nehan.PagedHtmlDocument(vnode.context.wrapper({ item: item }), {
+                            styleSheets:[
+                                Nehan.SemanticStyle.create({ all: true }),
+                                new Nehan.CssStyleSheet({
+                                    "body":{
+                                        display: "inline-block",
+                                        writingMode: "vertical-rl",
+                                        measure: $(el).height()
+                                    },
+                                    ".serif": {
+                                        "font-family": "'Noto Serif JP', 'Yu Mincho', YuMincho, 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'HGP明朝B', sans-serif",
+                                        color: "#dbdbdb"
+                                    }
+                                })
+                            ]
+                        }).render({
+                            onPage: (ctx) => {
+                                const evaluatedPage = ctx.caller.getPage(ctx.page.index);
+                                $(vnode.context.$refs.nehan).html(evaluatedPage.dom);
                             }
                         });
                     } else {
@@ -59,10 +59,10 @@ export default {
             }
         },
         wrapper () {
-            return _.template(`<div class="disp-iblock"><%= item %></div>`);
+            return _.template(`<div><%= item %></div>`);
         },
         compiled () {
-            return  _.template(`<h6 class="serif"><%= row %></h6>`);
+            return  _.template(`<h4 class="serif"><%= row %></h4>`);
         }
     },
     methods: {
@@ -84,8 +84,8 @@ export default {
     }
     .pull {
         text-align: center;
-        -webkit-transform: translate(-49%);
-        -ms-transform: translate(-49%);
-        transform: translate(-49%);
+        -webkit-transform: translate(-46%);
+        -ms-transform: translate(-46%);
+        transform: translate(-46%);
     }
 </style>

@@ -101,7 +101,13 @@ export default {
             moment().subtract(3, "M"),
             moment().subtract(4, "M"),
             moment().subtract(5, "M"),
-            moment().subtract(6, "M")
+            moment().subtract(6, "M"),
+            moment().subtract(7, "M"),
+            moment().subtract(8, "M"),
+            moment().subtract(9, "M"),
+            moment().subtract(10, "M"),
+            moment().subtract(11, "M"),
+            moment().subtract(12, "M")
         ]
 
     }
