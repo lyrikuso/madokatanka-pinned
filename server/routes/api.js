@@ -4,7 +4,7 @@ const nanoid = require("nanoid")
 const _ = require("underscore")
 const sanitizeHtml = require("sanitize-html")
 
-const serviceAccount = require("./adminsdk.js")
+const serviceAccount = require("./adminsdk-52m78-9f07b880bd.js")
 const firebase = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://madokatanka.firebaseio.com",

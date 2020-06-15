@@ -12,25 +12,42 @@ export default {
     props: [
         "context"
     ],
+    data () {
+        return {
+            title: ""
+        }
+    },
     directives: {
         sharethis: {
-            bind (el,binding,vnode) {
-                const doc = document.createElement("div");
-                doc.innerHTML = binding.value;
-                const text = (binding.value !== "") ? $(doc).text() + "／" + document.title : document.title;
-                $(el).jsSocials({
-                    shareIn: "popup",
-                    showCount: false,
-                    showLabel: false,
-                    text: text,
-                    shares: ["facebook", { share: "twitter", hashtags: "madokatanka" }, "line", "hatena"]
-                });
+            inserted (el,binding,vnode) {
+                vnode.context.$nextTick(() => {
+                    $(el).jsSocials({
+                        shareIn: "popup",
+                        showCount: false,
+                        showLabel: false,
+                        text: binding.value,
+                        shares: ["facebook", { share: "twitter", via: "madokatanka", hashtags: "madokatanka" }, "line", "hatena"]
+                    })
+                })
             }
         }
     },
     computed: {
         text () {
-            return _.isUndefined(this.context) ? "" : this.context
+            if (process.client) {
+                const context = _.isUndefined(this.context) ? "" : this.context
+                const doc = document.createElement("div");
+                doc.innerHTML = context
+                const text = (context !== "") ? $(doc).text() + "／" + this.title : this.title
+                return text
+            } else {
+                return ""
+            }
+        }
+    },
+    mounted () {
+        if (process.client) {
+            this.$data.title = this.$el.ownerDocument.title
         }
     }
 }
