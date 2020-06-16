@@ -1,22 +1,19 @@
 export const state = () => {
-    csrf: undefined
-}
-
+  csrf: undefined;
+};
 export const mutations = {
-    SET_CSRF (state, csrf) {
-        state.csrf = csrf
-    }
-}
-
+  SET_CSRF(state, csrf) {
+    state.csrf = csrf;
+  },
+};
 export const actions = {
-    nuxtServerInit ({ commit }, { req }) {
-        const csrf = req.csrfToken();
-        commit("SET_CSRF", csrf)
-    }
-}
-
+  nuxtServerInit({ commit }, { req }) {
+    const csrf = req.csrfToken();
+    commit("SET_CSRF", csrf);
+  },
+};
 export const getters = {
-    csrf (state) {
-        return state.csrf
-    }
-}
+  csrf(state) {
+    return state.csrf;
+  },
+};

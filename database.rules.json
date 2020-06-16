@@ -1,9 +1,7 @@
 {
   "rules": {
     "madokatanka": {
-      ".indexOn": [
-        "month"
-      ],
+      ".indexOn": ["month"],
       ".read": "false",
       ".write": "false",
       ".validate": "newData.val().length < 150"
