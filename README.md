@@ -1,10 +1,12 @@
 # madokatanka
 
+[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/paithiov909/madokatanka-pinned)
+
 > まどか短歌会のリポジトリです
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 

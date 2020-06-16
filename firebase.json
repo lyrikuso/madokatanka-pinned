@@ -21,11 +21,13 @@
     ],
     "headers": [
       {
-        "source" : "**/contents/**",
-        "headers" : [{
-          "key" : "Access-Control-Allow-Origin",
-          "value" : "*"
-        }]
+        "source": "**/contents/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
       }
     ],
     "cleanUrls": true,

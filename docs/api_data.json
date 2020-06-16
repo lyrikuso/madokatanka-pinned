@@ -50,6 +50,13 @@
             "optional": false,
             "field": "authuser",
             "description": "<p>User id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>reCAPTCHA token</p>"
           }
         ]
       }
@@ -93,6 +100,13 @@
             "optional": false,
             "field": "data",
             "description": "<p>User data</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>reCAPTCHA token</p>"
           }
         ]
       }
@@ -171,6 +185,13 @@
             "optional": false,
             "field": "month",
             "description": "<p>Month (YYYYMM)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>reCAPTCHA token</p>"
           }
         ]
       }
@@ -206,6 +227,13 @@
             "optional": false,
             "field": "data",
             "description": "<p>Poem id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>reCAPTCHA token</p>"
           }
         ]
       }
