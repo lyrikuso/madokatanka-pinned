@@ -157,13 +157,6 @@ module.exports = {
       {
         rel: "stylesheet",
         href:
-          "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css",
-        integrity: "sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=",
-        crossorigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href:
           "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css",
         integrity: "sha256-XwfUNXGiAjWyUGBhyXKdkRedMrizx1Ejqo/NReYNdUE=",
         crossorigin: "anonymous",
@@ -248,7 +241,7 @@ module.exports = {
       publicPath: "/_nuxt/",
     },
   },
-  css: ["@/assets/css/icomoon.css", "@/assets/css/jquery.flexdatalist.min.css"],
+  css: ["@/assets/css/icomoon.css"],
   plugins: [
     {
       src: "@/plugins/vue.js",
@@ -259,8 +252,6 @@ module.exports = {
     },
   ],
   modules: [
-    "nuxt-compress",
-    "@nuxtjs/pwa",
     [
       "@nuxtjs/axios",
       {
@@ -334,8 +325,11 @@ module.exports = {
         gzip: true,
       },
     ],
+    "@nuxtjs/pwa",
+    "nuxt-compress",
   ],
   build: {
+    devtools: isdev,
     publicPath: "/_nuxt/",
     extractCSS: true,
     plugins: [
@@ -346,6 +340,10 @@ module.exports = {
         _: "underscore",
         ClipboardJS: "clipboard",
         moment: "moment",
+      }),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /xlsx$/,
+        contextRegExp: /xlsx/,
       }),
       new MomentLocalesPlugin({
         localesToKeep: ["ja"],

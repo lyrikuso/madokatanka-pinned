@@ -1,6 +1,6 @@
 {
   "name": "madokatanka",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Narrative community focussing on tanka ",
   "homepage ": "https://github.com/paithiov909/madokatanka-pinned#readme",
   "license": "MIT",
@@ -13,8 +13,9 @@
     "dev": "cross-env NODE_ENV=\"development\" nodemon server/index.js --watch server ",
     "build": "cross-env NODE_ENV=\"production\" nuxt build",
     "start": "cross-env NODE_ENV=\"production\" forever --killSignal=SIGTERM -c 'nodemon --exitcrash ' server/index.js",
-    "generate-docs": "apidoc -i server/routes/ -o docs / ",
-    "deploy: hosting ": "firebase deploy--except functions ",
+    "analyze": "cross-env NODE_ENV=\"production\" nuxt build --analyze",
+    "generate-docs": "apidoc -i server/routes/ -o docs /",
+    "deploy:hosting": "firebase deploy --except functions ",
     "deploy:functions": "firebase deploy --only functions"
   },
   "husky": {
