@@ -76,7 +76,10 @@
           <h5>使用例</h5>
           <pre
             class="clip"
-            data-clipboard-text="<ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby>"
+            v-clipboard:copy="
+              `<ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby>`
+            "
+            v-clipboard:success="on_copy"
           ><code>&lt;ruby&gt;漢字&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;かんじ&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;</code></pre>
           <h4>&lt;span class="tcy"&gt;タグ</h4>
           <p>囲った文字を縦書き時に強制的に縦中横で表示します。</p>
@@ -84,7 +87,8 @@
           <h5>使用例</h5>
           <pre
             class="clip"
-            data-clipboard-text='<span class="tcy">100</span>'
+            v-clipboard:copy="`<span class=&quot;tcy&quot;>100</span>`"
+            v-clipboard:success="on_copy"
           ><code>&lt;span class=&quot;tcy&quot;&gt;100&lt;/span&gt;</code></pre>
         </div>
       </div>

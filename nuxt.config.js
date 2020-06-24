@@ -139,12 +139,14 @@ module.exports = {
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Noto+Serif+JP",
+        href:
+          "https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap",
         crossorigin: "anonymous",
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        href:
+          "https://fonts.googleapis.com/icon?family=Material+Icons&display=swap",
         crossorigin: "anonymous",
       },
       {
@@ -152,13 +154,6 @@ module.exports = {
         href:
           "https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css",
         integrity: "sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=",
-        crossorigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href:
-          "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css",
-        integrity: "sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=",
         crossorigin: "anonymous",
       },
       {
@@ -248,7 +243,7 @@ module.exports = {
       publicPath: "/_nuxt/",
     },
   },
-  css: ["@/assets/css/icomoon.css", "@/assets/css/jquery.flexdatalist.min.css"],
+  css: ["@/assets/css/icomoon.css"],
   plugins: [
     {
       src: "@/plugins/vue.js",
@@ -259,8 +254,6 @@ module.exports = {
     },
   ],
   modules: [
-    "nuxt-compress",
-    "@nuxtjs/pwa",
     [
       "@nuxtjs/axios",
       {
@@ -321,7 +314,12 @@ module.exports = {
       "@nuxtjs/firebase",
       {
         services: {
-          auth: true,
+          auth: {
+            persistance: "local",
+            initialize: {
+              onAuthStateChangedAction: "onAuthStateChanged",
+            },
+          },
         },
         onFirebaseHosting: false,
         config: config,
@@ -334,18 +332,24 @@ module.exports = {
         gzip: true,
       },
     ],
+    "@nuxtjs/pwa",
+    "nuxt-compress",
   ],
   build: {
+    devtools: isdev,
     publicPath: "/_nuxt/",
-    extractCSS: true,
+    extractCSS: isdev,
     plugins: [
       new webpack.ProvidePlugin({
         $: "jquery",
         jQuery: "jquery",
         "window.jQuery": "jquery",
         _: "underscore",
-        ClipboardJS: "clipboard",
         moment: "moment",
+      }),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /xlsx$/,
+        contextRegExp: /xlsx/,
       }),
       new MomentLocalesPlugin({
         localesToKeep: ["ja"],

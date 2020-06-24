@@ -28,6 +28,24 @@
             "value": "*"
           }
         ]
+      },
+      {
+        "source": "**/favicon/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "**/icomoon/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
       }
     ],
     "cleanUrls": true,

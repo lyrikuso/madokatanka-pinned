@@ -1,6 +1,5 @@
 if (process.client) {
   require("tableexport");
-  require("./flexdatalist/jquery.flexdatalist.min.js");
   require("./jssocials/jssocials.min.js");
   jsSocials.shares.twitter = {
     label: "Tweet",

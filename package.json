@@ -1,6 +1,6 @@
 {
   "name": "madokatanka",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Narrative community focussing on tanka ",
   "homepage ": "https://github.com/paithiov909/madokatanka-pinned#readme",
   "license": "MIT",
@@ -10,11 +10,12 @@
     "yarn": "1.22.x"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=\"development\" nodemon server/index.js --watch server ",
+    "dev": "cross-env NODE_ENV=\"development\" nodemon server/index.js --watch server",
     "build": "cross-env NODE_ENV=\"production\" nuxt build",
-    "start": "cross-env NODE_ENV=\"production\" forever --killSignal=SIGTERM -c 'nodemon --exitcrash ' server/index.js",
-    "generate-docs": "apidoc -i server/routes/ -o docs / ",
-    "deploy: hosting ": "firebase deploy--except functions ",
+    "start": "cross-env NODE_ENV=\"production\" forever --killSignal=SIGTERM -c 'nodemon --exitcrash' server/index.js",
+    "analyze": "cross-env NODE_ENV=\"production\" nuxt build --analyze",
+    "generate-docs": "apidoc -i server/routes/ -o docs /",
+    "deploy:hosting": "firebase deploy --except functions",
     "deploy:functions": "firebase deploy --only functions"
   },
   "husky": {
@@ -38,7 +39,6 @@
     "@nuxtjs/sitemap": "^1.2.0",
     "async": "^3.1.0",
     "body-parser": "^1.18.3",
-    "clipboard": "^2.0.4",
     "connect-memjs": "^0.2.1",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
@@ -64,6 +64,7 @@
     "swiper": "^4.5.0",
     "tableexport": "^5.2.0",
     "underscore": "^1.9.1",
+    "vue-clipboard2": "^0.3.1",
     "vue-disqus": "^3.0.5",
     "vuelidate": "^0.7.4",
     "vuesax": "^3.9.0"

@@ -1,6 +1,6 @@
 {
   "verbose": true,
-  "ignore": ["node_modules/*", "functions/*", "tmp/*"],
+  "ignore": ["node_modules/*", "functions/*", "tmp/*", "docs/*"],
   "execMap": {
     "js": "node --optimize_for_size --max_old_space_size=480 --gc_interval=100"
   }
