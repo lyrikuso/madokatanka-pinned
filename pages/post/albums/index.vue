@@ -13,21 +13,36 @@
       </vs-breadcrumb>
     </header>
 
-    <section v-if="authenticated">
+    <section>
       <vs-row vs-w="12">
-        <vs-col vs-type="flex" vs-justify="flex-end" vs-align="flex-end">
-          <vs-button type="border" @click.prevent="signout" icon="exit_to_app"
-            >サインアウト</vs-button
+        <client-only>
+          <vs-col
+            vs-type="flex"
+            vs-justify="flex-end"
+            vs-align="flex-end"
+            v-if="authenticated"
           >
-        </vs-col>
+            <vs-button type="border" @click.prevent="signout" icon="exit_to_app"
+              >サインアウト</vs-button
+            >
+          </vs-col>
+          <vs-col
+            vs-type="flex"
+            vs-justify="flex-end"
+            vs-align="flex-end"
+            v-else
+          >
+            <vs-button type="border" @click.prevent="signin" icon="person_add"
+              >サインイン</vs-button
+            >
+          </vs-col>
+        </client-only>
       </vs-row>
-      <div class="padding">
+      <div class="padding" v-show="authenticated">
         <p>
           あなたのユーザーページ：<a :href="link">{{ link }}</a>
         </p>
-      </div>
-      <form @submit.stop>
-        <div class="padding">
+        <form @submit.stop>
           <label for="name">あなたのなまえ</label>
           <input
             type="text"
@@ -55,7 +70,7 @@
             maxlength="180"
             name="url"
           />
-        </div>
+        </form>
         <vs-row vs-w="12">
           <vs-col vs-type="flex" vs-justify="flex-end" vs-align="flex-end">
             <vs-button type="border" @click.prevent="push" icon="add_circle"
@@ -66,37 +81,34 @@
             >
           </vs-col>
         </vs-row>
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <td>Remove</td>
-            <td>タイトル</td>
-            <td>URL</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(val, idx) in data.albums" :key="val.key">
-            <td>
-              <a role="button" @click.stop="splice(idx)"
-                ><i class="material-icons">remove_circle</i></a
-              >
-            </td>
-            <td>{{ val.title }}</td>
-            <td>{{ val.url }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <td>Remove</td>
+              <td>タイトル</td>
+              <td>URL</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(val, idx) in data.albums" :key="val.key">
+              <td>
+                <a role="button" @click.stop="splice(idx)"
+                  ><i class="material-icons">remove_circle</i></a
+                >
+              </td>
+              <td v-clipboard:copy="val.title" v-clipboard:success="on_copy">
+                {{ val.title }}
+              </td>
+              <td v-clipboard:copy="val.url" v-clipboard:success="on_copy">
+                {{ val.url }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section>
-      <vs-row vs-w="12">
-        <vs-col vs-type="flex" vs-justify="flex-end" vs-align="flex-end">
-          <vs-button type="border" @click.prevent="signin" icon="person_add"
-            >サインイン</vs-button
-          >
-        </vs-col>
-      </vs-row>
       <div class="padding">
         <h3>アルバム機能について</h3>
         <ul>
@@ -178,6 +190,7 @@
   import firebase from "firebase/app";
   import nanoid from "nanoid";
   import { maxLength, url } from "vuelidate/lib/validators";
+  import clipboard from "~/plugins/clipboard.js";
 
   export default {
     head() {
@@ -214,9 +227,9 @@
         ],
       };
     },
+    mixins: [clipboard],
     data() {
       return {
-        user: null,
         data: {
           id: "",
           name: "匿名のユーザーさん",
@@ -234,7 +247,7 @@
     },
     computed: {
       authenticated() {
-        return !_.isNull(this.user);
+        return !_.isNull(this.$store.getters.uid);
       },
       link() {
         return `https://madokatanka.herokuapp.com/albums/${this.data.id}`;
@@ -242,36 +255,35 @@
     },
     async mounted() {
       await this.$recaptcha.init();
-      this.$fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-      this.$fireAuth.onAuthStateChanged((user) => {
+      this.$fireAuth.onAuthStateChanged(async (user) => {
+        const token = await this.$recaptcha.execute({ action: "auth" });
         if (user) {
           this.$vs.loading({
             text: "ログインしています",
           });
-          this.user = user;
-          this.$nextTick(() => {
-            // console.info(user)
+          this.$nextTick(function () {
             this.$gtag("set", {
               login: true,
             });
             this.$axios
               .put("/api/albums", {
                 _csrf: this.$store.getters.csrf,
-                authuser: this.user.uid,
+                authuser: this.$store.getters.uid,
+                token: token,
               })
               .then((res) => {
                 this.data = res.data.data;
                 this.$vs.loading.close();
               })
               .catch((error) => {
-                console.error(error);
+                console.error(error.response);
+                this.$vs.loading.close();
               });
           });
         } else {
           this.$gtag("set", {
             login: false,
           });
-          this.user = null;
         }
       });
     },
@@ -291,21 +303,16 @@
         });
       },
       signout() {
-        this.$fireAuth
-          .signOut()
-          .then(() => {
-            this.user = null;
-          })
-          .catch((err) => {
-            this.$vs.notify({
-              time: 8000,
-              title:
-                "Googleアカウントから正常にログアウトできませんでした。もう一度お試しください",
-              text: "",
-              color: "warning",
-              icon: "info",
-            });
+        this.$fireAuth.signOut().catch((err) => {
+          this.$vs.notify({
+            time: 8000,
+            title:
+              "Googleアカウントから正常にログアウトできませんでした。もう一度お試しください",
+            text: "",
+            color: "warning",
+            icon: "info",
           });
+        });
       },
       push() {
         if (!this.$v.$invalid) {
@@ -330,11 +337,11 @@
         this.data.albums.splice(idx, 1);
       },
       async update() {
-        const token = await this.$recaptcha.execute({ action: "post_tanka" });
+        const token = await this.$recaptcha.execute({ action: "update_album" });
         this.$axios
           .post("/api/albums", {
             _csrf: this.$store.getters.csrf,
-            authuser: this.user.uid,
+            authuser: this.$store.getters.uid,
             data: this.data,
             token: token,
           })

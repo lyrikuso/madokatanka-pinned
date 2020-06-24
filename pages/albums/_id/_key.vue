@@ -49,7 +49,8 @@
               <td>{{ item.id }}</td>
               <td
                 class="clip"
-                :data-clipboard-text="item.body"
+                v-clipboard:copy="item.body"
+                v-clipboard:success="on_copy"
                 v-html="item.body"
               ></td>
             </tr>

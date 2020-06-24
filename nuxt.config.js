@@ -139,12 +139,14 @@ module.exports = {
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Noto+Serif+JP",
+        href:
+          "https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap",
         crossorigin: "anonymous",
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        href:
+          "https://fonts.googleapis.com/icon?family=Material+Icons&display=swap",
         crossorigin: "anonymous",
       },
       {
@@ -312,7 +314,12 @@ module.exports = {
       "@nuxtjs/firebase",
       {
         services: {
-          auth: true,
+          auth: {
+            persistance: "local",
+            initialize: {
+              onAuthStateChangedAction: "onAuthStateChanged",
+            },
+          },
         },
         onFirebaseHosting: false,
         config: config,
@@ -331,14 +338,13 @@ module.exports = {
   build: {
     devtools: isdev,
     publicPath: "/_nuxt/",
-    extractCSS: true,
+    extractCSS: isdev,
     plugins: [
       new webpack.ProvidePlugin({
         $: "jquery",
         jQuery: "jquery",
         "window.jQuery": "jquery",
         _: "underscore",
-        ClipboardJS: "clipboard",
         moment: "moment",
       }),
       new webpack.IgnorePlugin({

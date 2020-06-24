@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     mySwiper(slides) {
-      if (this.swiper !== undefined) {
+      if (!_.isUndefined(this.swiper)) {
         this.swiper = this.swiper.destroy();
       }
       this.swiper = new Swiper("#swiper", {
