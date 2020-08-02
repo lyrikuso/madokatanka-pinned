@@ -1,7 +1,7 @@
 {
   "name": "madokatanka",
-  "version": "1.1.1",
-  "description": "Narrative community focussing on tanka ",
+  "version": "1.1.2",
+  "description": "Narrative community focussing on tanka",
   "homepage ": "https://github.com/paithiov909/madokatanka-pinned#readme",
   "license": "MIT",
   "private": true,
@@ -51,7 +51,7 @@
     "helmet": "^3.16.0",
     "ioredis": "^4.9.0",
     "jquery": "^3.3.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "memorystore": "^1.6.1",
     "moesif-express": "^2.9.5",
     "moment": "^2.24.0",
