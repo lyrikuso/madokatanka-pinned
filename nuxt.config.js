@@ -3,6 +3,7 @@ const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 const config = require("./firebase.config.js");
 const isdev = process.env.NODE_ENV !== "production";
 
+// TODO Modify these exports.
 module.exports = {
   mode: "universal",
   head: {
@@ -273,7 +274,7 @@ module.exports = {
       "@nuxtjs/recaptcha",
       {
         hideBadge: false,
-        siteKey: "6LdcMaUZAAAAAF3jFrz888WQiTsNF-bYL6U2XbJy",
+        siteKey: "6LdcMaUZAAAAAF3jFrz888WQiTsNF-bYL6U2XbJy", // TODO reCAPTCHA site key comes here.
         version: 3,
         size: "compact",
       },

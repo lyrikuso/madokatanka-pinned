@@ -5,11 +5,11 @@ const nanoid = require("nanoid");
 const _ = require("underscore");
 const sanitizeHtml = require("sanitize-html");
 
-const reCAPTCHA_Key = "6LdcMaUZAAAAAJFfb-MANTagvAiMbOVZZNbimg7l";
-const serviceAccount = require("./adminsdk-52m78-9f07b880bd.js");
+const reCAPTCHA_Key = "6LdcMaUZAAAAAJFfb-MANTagvAiMbOVZZNbimg7l"; // TODO Replace to your own key.
+const serviceAccount = require("./adminsdk.js"); // TODO If you make this repository public, carefully keep these info secret.
 const firebase = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://madokatanka.firebaseio.com",
+  databaseURL: "https://madokatanka.firebaseio.com", // TODO Replace here.
 });
 const database = firebase.database().ref().child("madokatanka");
 const userdata = firebase.database().ref().child("userdata");

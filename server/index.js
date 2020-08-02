@@ -13,7 +13,7 @@ const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
 const app = express();
-const host = process.env.HOST || "127.0.0.1";
+const host = process.env.HOST || "127.0.0.1"; // TODO Set to "0.0.0.0" as the environment variables.
 const port = process.env.PORT || 3000;
 let memorystore;
 if (process.env.NODE_ENV == "production") {
@@ -49,7 +49,7 @@ app.use(cookieParser());
 app.use(
   session({
     store: memorystore,
-    secret: process.env.SESSION_SECRET || "bbseries",
+    secret: process.env.SESSION_SECRET || "NowRunningOnLocal",
     resave: true,
     saveUninitialized: true,
     rolling: true,

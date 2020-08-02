@@ -1,5 +1,3 @@
 export default function () {
-
-    moment.locale("ja")
-
+  moment.locale("ja");
 }
