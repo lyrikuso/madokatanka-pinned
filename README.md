@@ -1,6 +1,6 @@
 # madokatanka
 
-[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/paithiov909/madokatanka-pinned)
+[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/lyrikuso/madokatanka-pinned)
 
 > まどか短歌会のリポジトリです
 
@@ -8,7 +8,7 @@
 
 インターネット上でのみ活動する、実体のない短歌会です
 
-- [API doc](https://paithiov909.github.io/madokatanka-pinned/)
+- [API doc](https://lyrikuso.github.io/madokatanka-pinned/)
 
 ## Deployment Guide
 
