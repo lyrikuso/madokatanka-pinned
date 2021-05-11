@@ -8,8 +8,6 @@
 
 インターネット上でのみ活動する、実体のない短歌会です
 
-- [まどか短歌会](https://madokatanka.herokuapp.com/)
-- [Twitter (@madokatanka) ](https://twitter.com/madokatanka)
 - [API doc](https://paithiov909.github.io/madokatanka-pinned/)
 
 ## Deployment Guide
